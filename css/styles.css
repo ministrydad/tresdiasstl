@@ -1,0 +1,402 @@
+/* =========================================================
+   Tres Dias of St. Louis — main stylesheet
+   ========================================================= */
+
+/* ---------- Fonts (stored in /fonts so they always load) ---------- */
+@font-face { font-family: 'Raleway'; font-weight: 300; font-style: normal; font-display: swap; src: url('../fonts/raleway-latin-300-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Raleway'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/raleway-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Raleway'; font-weight: 700; font-style: normal; font-display: swap; src: url('../fonts/raleway-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Raleway'; font-weight: 800; font-style: normal; font-display: swap; src: url('../fonts/raleway-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow'; font-weight: 400; font-style: normal; font-display: swap; src: url('../fonts/barlow-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow'; font-weight: 500; font-style: normal; font-display: swap; src: url('../fonts/barlow-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Barlow'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/barlow-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Oswald'; font-weight: 600; font-style: normal; font-display: swap; src: url('../fonts/oswald-latin-600-normal.woff2') format('woff2'); }
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: 'Barlow', Arial, sans-serif;
+  color: #333;
+  background: #fff;
+  line-height: 1.4;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.container.narrow { max-width: 640px; }
+
+/* ---------- Header ---------- */
+.site-header { background: #fff; padding: 26px 0 14px; }
+
+.site-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: #111;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.35);
+}
+
+/* ---------- Navigation ---------- */
+.site-nav { background: #f1f1f1; }
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  display: block;
+  padding: 6px 7px;
+  font-size: 9px;
+  color: #222;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.nav-links a:hover,
+.nav-links a.active { color: #000; text-decoration: underline; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  font: 600 13px 'Barlow', sans-serif;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 420px;
+  background: url('../images/st-louis-arch.jpg') center 35% / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 16px 90px;
+}
+
+.hero-discover {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  font-size: clamp(26px, 4vw, 36px);
+  color: #111;
+  line-height: 1;
+}
+
+.hero-title {
+  margin: 4px 0 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: clamp(26px, 4vw, 36px);
+  color: #111;
+  line-height: 1.1;
+}
+.hero-title strong { font-weight: 800; }
+
+.hero-cross {
+  width: 92px;
+  margin: 10px auto 0;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
+}
+
+.hero-banner {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 18px;
+  padding: 7px 10px;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: #333;
+}
+
+/* ---------- Who We Are ---------- */
+.who {
+  background: #bdbdbd;
+  text-align: center;
+  padding: 34px 0 60px;
+}
+.who h2 {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #111;
+}
+.who-label {
+  margin: 2px 0 18px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  color: #111;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.45);
+}
+.who p:not(.who-label) {
+  margin: 0;
+  font-size: 10px;
+  color: #555;
+}
+
+/* ---------- Event cards ---------- */
+.events {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 22px 16px 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  position: relative;
+  width: 153px;
+  height: 232px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 98px;
+  background: rgba(110,110,110,0.92);
+  border-radius: 3px 3px 0 0;
+  color: #fff;
+  padding: 7px 8px 0;
+}
+.card-info h3 {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+.card-sub {
+  margin: 0;
+  font-weight: 600;
+  font-size: 10px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.card-date {
+  margin: 20px 0 0;
+  font-size: 10px;
+}
+
+.card-btn {
+  position: absolute;
+  left: 4px;
+  bottom: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  background: #3a3a3a;
+  color: #fff;
+  border-radius: 14px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-decoration: none;
+}
+.card-btn:hover { background: #222; }
+
+.arrow {
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: #fff;
+  position: relative;
+}
+.arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  transform: rotate(45deg);
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter { padding: 0 16px 50px; }
+
+.nl-box {
+  max-width: 190px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.nl-dash {
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: #999;
+  margin: 0 auto 6px;
+}
+.nl-kicker {
+  margin: 0;
+  font-size: 5px;
+  letter-spacing: 0.25em;
+  color: #555;
+}
+.nl-box h2 {
+  margin: 4px 0 6px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #222;
+}
+.nl-intro {
+  margin: 0 0 14px;
+  font-size: 7px;
+  color: #666;
+}
+.hl-blue   { color: #3a6fb0; }
+.hl-orange { color: #c46a1a; }
+
+.nl-form { text-align: left; position: relative; }
+.nl-form label {
+  display: block;
+  font-size: 6px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 3px;
+}
+.nl-form .req { color: #c0392b; }
+
+.nl-form input {
+  width: 100%;
+  padding: 5px 6px;
+  margin-bottom: 7px;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  background: #f7f7f7;
+  font: 6px 'Barlow', sans-serif;
+}
+.nl-form input:focus { outline: 1px solid #999; background: #fff; }
+
+.nl-row { display: flex; gap: 6px; }
+.nl-row > div { flex: 1; }
+
+.nl-form button {
+  width: 100%;
+  padding: 6px;
+  border: 0;
+  border-radius: 3px;
+  background: #3a3a3a;
+  color: #fff;
+  font: 600 6px 'Barlow', sans-serif;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+.nl-form button:hover { background: #222; }
+
+.nl-box hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 8px 0 6px;
+}
+.nl-tagline {
+  margin: 0 0 3px;
+  font-size: 6px;
+  color: #b0601c;
+  letter-spacing: 0.05em;
+}
+.nl-tagline span { color: #999; }
+.nl-fine {
+  margin: 0;
+  font-size: 4px;
+  color: #888;
+}
+
+/* ---------- Scale everything up on normal screens ----------
+   The original Wix page is a fixed 980px layout. The sizes above
+   are measured from your screenshot; this block scales the whole
+   page so it reads like the live site at full size.            */
+@media (min-width: 700px) {
+  .site-header { padding: 32px 0 18px; }
+  .site-title  { font-size: 19px; }
+  .nav-links a { font-size: 12px; padding: 8px 9px; }
+
+  .hero { min-height: 520px; }
+  .hero-cross { width: 125px; }
+  .hero-banner { font-size: 17px; padding: 9px 12px; }
+
+  .who h2 { font-size: 28px; }
+  .who-label { font-size: 13px; }
+  .who p:not(.who-label) { font-size: 13px; }
+
+  .events { gap: 19px; }
+  .card { width: 196px; height: 297px; }
+  .card-info { height: 125px; padding: 9px 10px 0; }
+  .card-info h3 { font-size: 15px; }
+  .card-sub, .card-date { font-size: 13px; }
+  .card-date { margin-top: 26px; }
+  .card-btn { font-size: 11px; padding: 6px 12px; }
+
+  .nl-box { max-width: 240px; }
+  .nl-kicker { font-size: 6px; }
+  .nl-box h2 { font-size: 18px; }
+  .nl-intro { font-size: 9px; }
+  .nl-form label { font-size: 8px; }
+  .nl-form input { font-size: 9px; padding: 7px 8px; }
+  .nl-form button { font-size: 8px; padding: 8px; }
+  .nl-tagline { font-size: 8px; }
+  .nl-fine { font-size: 6px; }
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 699px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; flex-direction: column; padding-bottom: 8px; }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 14px; padding: 8px 0; }
+
+  .site-title { font-size: 17px; }
+
+  .hero { min-height: 440px; padding-top: 90px; }
+  .hero-banner { font-size: 12px; letter-spacing: 0.2em; }
+
+  .who { padding: 30px 0 40px; }
+  .who h2 { font-size: 24px; }
+  .who-label { font-size: 12px; }
+  .who p:not(.who-label) { font-size: 14px; }
+
+  .card { width: 100%; max-width: 320px; height: 380px; }
+  .card-info { height: 150px; padding: 12px 14px 0; }
+  .card-info h3 { font-size: 20px; }
+  .card-sub, .card-date { font-size: 15px; }
+  .card-btn { font-size: 12px; padding: 8px 14px; left: 10px; bottom: 10px; }
+
+  .nl-box { max-width: 340px; }
+  .nl-kicker { font-size: 9px; }
+  .nl-box h2 { font-size: 22px; }
+  .nl-intro { font-size: 13px; }
+  .nl-form label { font-size: 12px; }
+  .nl-form input { font-size: 15px; padding: 10px; }
+  .nl-form button { font-size: 12px; padding: 12px; }
+  .nl-tagline { font-size: 12px; }
+  .nl-fine { font-size: 10px; }
+}
