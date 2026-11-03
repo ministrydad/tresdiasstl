@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Shared color blends for the icons -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -32,7 +33,7 @@
         <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
 
@@ -49,6 +50,8 @@
       </nav>
     </div>
   </header>
+
+  <main id="main" tabindex="-1">
 
   <!-- ===== PAGE BANNER ===== -->
   <section class="page-hero" style="background-image: linear-gradient(180deg, rgba(10,14,12,0.55), rgba(10,14,12,0.62)), url('images/womens-weekend.jpg'); background-position: center 35%;">
@@ -72,10 +75,10 @@
       </ol>
 
       <div class="btn-row">
-        <!-- PAPER APPLICATION: replace # with the PDF (for example: files/application.pdf) -->
-        <a href="#" class="btn btn-green" target="_blank" rel="noopener">Paper Application</a>
-        <!-- ONLINE APPLICATION: replace # with the online form link -->
-        <a href="#" class="btn btn-dark-outline" target="_blank" rel="noopener">Online Application</a>
+        <!-- PAPER APPLICATION: replace contact.html with the PDF (for example: files/application.pdf) and add target="_blank" -->
+        <a href="contact.html" class="btn btn-green">Paper Application</a>
+        <!-- ONLINE APPLICATION: replace contact.html with the online form link and add target="_blank" -->
+        <a href="contact.html" class="btn btn-dark-outline">Online Application</a>
       </div>
     </div>
   </section>
@@ -155,7 +158,7 @@
       <div class="faq-item">
         <h3>How may I attend a Tres Dias weekend?</h3>
         <div class="faq-body">
-          <p>All potential Tres Dias attendees must be sponsored. You can obtain an application form below.</p>
+          <p>All potential Tres Dias attendees must be sponsored. You can obtain an application form using the buttons below.</p>
         </div>
       </div>
     </div>
@@ -168,11 +171,13 @@
       <p>Talk with your sponsor, then fill out an application.</p>
       <div class="btn-row">
         <!-- Same links as the buttons near the top of the page -->
-        <a href="#" class="btn btn-white" target="_blank" rel="noopener">Paper Application</a>
-        <a href="#" class="btn btn-outline" target="_blank" rel="noopener">Online Application</a>
+        <a href="contact.html" class="btn btn-white">Paper Application</a>
+        <a href="contact.html" class="btn btn-outline">Online Application</a>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
@@ -187,7 +192,7 @@
       </div>
 
       <div>
-        <h4>Explore</h4>
+        <h2 class="footer-h">Explore</h2>
         <ul class="footer-links">
           <li><a href="about.html">About</a></li>
           <li><a href="attend.html">Attend a Weekend</a></li>
@@ -198,13 +203,12 @@
       </div>
 
       <div>
-        <h4>Get in Touch</h4>
+        <h2 class="footer-h">Get in Touch</h2>
         <ul class="footer-links">
           <li><a href="contact.html">Contact Us</a></li>
           <li><a href="mailto:chairman@tresdiasstl.org" class="footer-social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5.1 8-5.1V7H4zm16 2.8-8 5.1-8-5.1V17h16V9.8z"/></svg>chairman@tresdiasstl.org</a></li>
-          <!-- FACEBOOK: replace # with your Facebook page address -->
           <li>
-            <a href="#" class="footer-social">
+            <a href="https://www.facebook.com/tresdiasstlouis" class="footer-social" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>
               Facebook
             </a>
@@ -244,7 +248,7 @@
           const cls = passed ? ' is-past' : (i === nextIndex ? ' is-next' : '');
           return `
             <article class="wk-row${cls}">
-              <span class="wk-num">${w.number}</span>
+              <span class="wk-num" aria-hidden="true">${w.number}</span>
               <div class="wk-info">
                 <h4>${type === 'men' ? "Men's" : "Women's"} Weekend #${TDesc(w.number)}</h4>
                 <p>${TD.range(w)}</p>
@@ -262,12 +266,16 @@
     // Mobile menu open/close
     const toggle = document.querySelector('.nav-toggle');
     const links = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
+    const setMenu = open => {
+      links.classList.toggle('open', open);
       toggle.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open);
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    });
+    };
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); toggle.focus(); } });
+    document.addEventListener('click', e => { if (links.classList.contains('open') && !e.target.closest('.site-header')) setMenu(false); });
 
     // Light shadow under the header once the page scrolls
     const header = document.querySelector('.site-header');

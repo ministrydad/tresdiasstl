@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Tres Dias of St. Louis</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="/images/cross-logo.png">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Shared color blends for the icons -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="td-stroke" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="24">
+        <stop offset="0" stop-color="#4cd06e"/>
+        <stop offset="1" stop-color="#15813a"/>
+      </linearGradient>
+      <linearGradient id="td-fill" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7ee39a" stop-opacity="0.55"/>
+        <stop offset="1" stop-color="#23b149" stop-opacity="0.22"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ===== HEADER (logo + menu in one bar, stays at top) ===== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="/index.html" class="brand">
+        <img src="/images/cross-logo.png" alt="" class="brand-logo">
+        <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
+      </a>
+
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav aria-label="Main">
+        <ul id="nav-links" class="nav-links">
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/attend.html">Attend a Weekend</a></li>
+          <li><a href="/values.html">Values &amp; Beliefs</a></li>
+          <li><a href="/team.html">Team</a></li>
+          <li><a href="/secuela.html">Secuela</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+  <section class="nf">
+    <div class="container">
+      <p class="nf-code" aria-hidden="true">404</p>
+      <h1>We can't find that page</h1>
+      <p>The page may have moved, or the address may be mistyped. Try one of these instead:</p>
+      <div class="btn-row">
+        <a href="/index.html" class="btn btn-green">Go to Home</a>
+        <a href="/attend.html" class="btn btn-dark-outline">Attend a Weekend</a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="/index.html" class="brand brand-light">
+          <img src="/images/cross-logo.png" alt="" class="brand-logo">
+          <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
+        </a>
+        <p>A lay-led Christian movement strengthening and extending the Body of Christ in the St. Louis area.</p>
+        <p class="footer-motto">Connect · Serve · Grow</p>
+      </div>
+
+      <div>
+        <h2 class="footer-h">Explore</h2>
+        <ul class="footer-links">
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/attend.html">Attend a Weekend</a></li>
+          <li><a href="/values.html">Values &amp; Beliefs</a></li>
+          <li><a href="/team.html">Team</a></li>
+          <li><a href="/secuela.html">Secuela</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="footer-h">Get in Touch</h2>
+        <ul class="footer-links">
+          <li><a href="/contact.html">Contact Us</a></li>
+          <li><a href="mailto:chairman@tresdiasstl.org" class="footer-social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5.1 8-5.1V7H4zm16 2.8-8 5.1-8-5.1V17h16V9.8z"/></svg>chairman@tresdiasstl.org</a></li>
+          <li>
+            <a href="https://www.facebook.com/tresdiasstlouis" class="footer-social" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>
+              Facebook
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> Tres Dias of St. Louis. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/admin.html">Team Login</a>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu open/close
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.getElementById('nav-links');
+    const setMenu = open => {
+      links.classList.toggle('open', open);
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); toggle.focus(); } });
+    document.addEventListener('click', e => { if (links.classList.contains('open') && !e.target.closest('.site-header')) setMenu(false); });
+
+    // Light shadow under the header once the page scrolls
+    const header = document.querySelector('.site-header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Keep the copyright year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

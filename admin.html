@@ -25,22 +25,23 @@
   </header>
 
   <!-- ===== LOGIN ===== -->
-  <main id="login-view" class="admin-login" hidden>
+  <main id="main">
+  <section id="login-view" class="admin-login" hidden>
     <form id="login-form" class="pay-card">
       <div class="pillar-icon" aria-hidden="true">
         <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle class="tone fill" cx="12" cy="16" r="1.6"/></svg>
       </div>
-      <h2>Team Login</h2>
+      <h1 class="a-login-h">Team Login</h1>
       <p>Log in to update weekend dates and Secuela details.</p>
       <label class="a-label" for="pw">Password</label>
       <input class="a-input" type="password" id="pw" autocomplete="current-password" required>
       <p class="a-error" id="login-error" role="alert"></p>
       <button class="btn btn-green a-full" type="submit">Log In</button>
     </form>
-  </main>
+  </section>
 
   <!-- ===== EDITOR ===== -->
-  <main id="edit-view" hidden>
+  <section id="edit-view" hidden>
     <div class="container admin-wrap">
       <div class="admin-head">
         <p class="eyebrow">Team Editor</p>
@@ -83,11 +84,11 @@
         <div class="a-grid">
           <div class="a-field a-span2">
             <label class="a-label" for="s-title">Event name</label>
-            <input class="a-input" id="s-title" placeholder="Summer Secuela">
+            <input class="a-input" type="text" id="s-title" placeholder="Summer Secuela">
           </div>
           <div class="a-field a-span2">
             <label class="a-label" for="s-note">Status line <span class="a-muted">(optional)</span></label>
-            <input class="a-input" id="s-note" placeholder="Still scheduled…">
+            <input class="a-input" type="text" id="s-note" placeholder="Still scheduled…">
           </div>
           <div class="a-field">
             <label class="a-label" for="s-date">Date</label>
@@ -105,15 +106,15 @@
           </div>
           <div class="a-field a-span2">
             <label class="a-label" for="s-place">Location name</label>
-            <input class="a-input" id="s-place" placeholder="Route 66 State Park">
+            <input class="a-input" type="text" id="s-place" placeholder="Route 66 State Park">
           </div>
           <div class="a-field">
             <label class="a-label" for="s-address">Street address</label>
-            <input class="a-input" id="s-address" placeholder="97 North Outer Rd. East">
+            <input class="a-input" type="text" id="s-address" placeholder="97 North Outer Rd. East">
           </div>
           <div class="a-field">
             <label class="a-label" for="s-city">City, state, ZIP</label>
-            <input class="a-input" id="s-city" placeholder="Eureka, MO 63025">
+            <input class="a-input" type="text" id="s-city" placeholder="Eureka, MO 63025">
           </div>
         </div>
 
@@ -127,6 +128,7 @@
         <button class="btn btn-green" id="save" type="button">Save Changes</button>
       </div>
     </div>
+  </section>
   </main>
 
   <script src="js/weekends.js"></script>
@@ -178,11 +180,11 @@
       row.innerHTML = `
         <div class="a-field a-letters">
           <label class="a-label">Last names</label>
-          <input class="a-input" data-k="letters" placeholder="A–D" value="${esc(b.letters)}">
+          <input class="a-input" type="text" data-k="letters" placeholder="A–D" value="${esc(b.letters)}">
         </div>
         <div class="a-field">
           <label class="a-label">Bring</label>
-          <input class="a-input" data-k="item" placeholder="Hamburger buns" value="${esc(b.item)}">
+          <input class="a-input" type="text" data-k="item" placeholder="Hamburger buns" value="${esc(b.item)}">
         </div>
         <button type="button" class="a-remove" aria-label="Remove this row" title="Remove">&times;</button>`;
       row.querySelector('.a-remove').onclick = () => { row.remove(); markDirty(); };

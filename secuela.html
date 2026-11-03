@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Shared color blends for the icons -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -32,7 +33,7 @@
         <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
 
@@ -50,6 +51,8 @@
     </div>
   </header>
 
+  <main id="main" tabindex="-1">
+
   <!-- ===== PAGE BANNER ===== -->
   <section class="page-hero" style="background-image: linear-gradient(180deg, rgba(10,14,12,0.5), rgba(10,14,12,0.6)), url('images/guitar.jpg'); background-position: center 30%;">
     <div class="container">
@@ -64,8 +67,10 @@
     <div class="container sec-grid">
       <div class="sec-info">
         <p class="eyebrow" data-s="note"></p>
-        <h2 data-s="title"></h2>
+        <h2 data-s="title">Secuela</h2>
         <span class="rule rule-left" aria-hidden="true"></span>
+
+        <p class="sec-passed" data-s="passed" hidden>This Secuela has already happened. Check back soon for the next date!</p>
 
         <ul class="sec-facts">
           <li>
@@ -117,6 +122,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -130,7 +137,7 @@
       </div>
 
       <div>
-        <h4>Explore</h4>
+        <h2 class="footer-h">Explore</h2>
         <ul class="footer-links">
           <li><a href="about.html">About</a></li>
           <li><a href="attend.html">Attend a Weekend</a></li>
@@ -141,13 +148,12 @@
       </div>
 
       <div>
-        <h4>Get in Touch</h4>
+        <h2 class="footer-h">Get in Touch</h2>
         <ul class="footer-links">
           <li><a href="contact.html">Contact Us</a></li>
           <li><a href="mailto:chairman@tresdiasstl.org" class="footer-social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5.1 8-5.1V7H4zm16 2.8-8 5.1-8-5.1V17h16V9.8z"/></svg>chairman@tresdiasstl.org</a></li>
-          <!-- FACEBOOK: replace # with your Facebook page address -->
           <li>
-            <a href="#" class="footer-social">
+            <a href="https://www.facebook.com/tresdiasstlouis" class="footer-social" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>
               Facebook
             </a>
@@ -180,6 +186,8 @@
         const dateText = day.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
         const full = `${S.place}, ${S.address}, ${S.city}`;
 
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        $('passed').hidden = day >= today;
         $('title').textContent = S.title;
         $('note').textContent = S.note || '';
         if (!S.note) $('note').style.display = 'none';
@@ -216,12 +224,16 @@
     // Mobile menu open/close
     const toggle = document.querySelector('.nav-toggle');
     const links = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
+    const setMenu = open => {
+      links.classList.toggle('open', open);
       toggle.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open);
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    });
+    };
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); toggle.focus(); } });
+    document.addEventListener('click', e => { if (links.classList.contains('open') && !e.target.closest('.site-header')) setMenu(false); });
 
     // Light shadow under the header once the page scrolls
     const header = document.querySelector('.site-header');

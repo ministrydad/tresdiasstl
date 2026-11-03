@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Shared color blends for the icons -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -32,7 +33,7 @@
         <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
       </a>
 
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
 
@@ -49,6 +50,8 @@
       </nav>
     </div>
   </header>
+
+  <main id="main" tabindex="-1">
 
   <!-- ===== PAGE BANNER ===== -->
   <section class="page-hero" style="background-image: linear-gradient(180deg, rgba(10,14,12,0.55), rgba(10,14,12,0.62)), url('images/mens-weekend.jpg'); background-position: center 35%;">
@@ -70,63 +73,63 @@
 
       <ol class="belief-list">
         <li class="belief">
-          <span class="belief-num">01</span>
+          <span class="belief-num" aria-hidden="true">01</span>
           <div>
             <p>Our faith in one Triune God – The Father, The Son and The Holy Spirit.</p>
             <cite>Matt. 28:19</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">02</span>
+          <span class="belief-num" aria-hidden="true">02</span>
           <div>
             <p>That Jesus Christ is the only Savior and is God in the flesh.</p>
             <cite>John 1:1, 1:14, 3:36, 14:6 &amp; Heb. 2:17</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">03</span>
+          <span class="belief-num" aria-hidden="true">03</span>
           <div>
             <p>That the Holy Spirit is God and is the Lord and Giver of life, who continues to work in believers today to sanctify, edify and empower the whole Christian church on earth — for His purpose.</p>
             <cite>Job 33:4, Acts 1:8, John 14:26 &amp; Rom. 8:11</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">04</span>
+          <span class="belief-num" aria-hidden="true">04</span>
           <div>
             <p>That the Holy Scriptures are the inspired and completely true Word of God.</p>
             <cite>II Tim. 3:16–17</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">05</span>
+          <span class="belief-num" aria-hidden="true">05</span>
           <div>
             <p>That all have sinned and fallen short of the glory of God; that forgiveness of sins is received through confession and repentance — and that our sins are washed away through the blood of Jesus Christ.</p>
             <cite>Acts 2:38, I John 1:9 &amp; Rom. 3:23</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">06</span>
+          <span class="belief-num" aria-hidden="true">06</span>
           <div>
             <p>That salvation is a gift of God’s grace received through personal faith in Jesus Christ.</p>
             <cite>Eph. 2:8</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">07</span>
+          <span class="belief-num" aria-hidden="true">07</span>
           <div>
             <p>That the Body of Christ is to make every effort to keep the unity of the Spirit through the bond of peace until we all reach unity in the faith and in the knowledge of the Son of God.</p>
             <cite>Eph. 4:3, 13</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">08</span>
+          <span class="belief-num" aria-hidden="true">08</span>
           <div>
             <p>That God’s unconditional love, as made manifest to us through Jesus Christ, is the primary witness by which people are renewed, edified and changed.</p>
             <cite>I Cor. 13:8</cite>
           </div>
         </li>
         <li class="belief">
-          <span class="belief-num">09</span>
+          <span class="belief-num" aria-hidden="true">09</span>
           <div>
             <p>That God has called us to live holy lives that will bring glory to His name.</p>
             <cite>Col. 3:1–25</cite>
@@ -152,6 +155,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -165,7 +170,7 @@
       </div>
 
       <div>
-        <h4>Explore</h4>
+        <h2 class="footer-h">Explore</h2>
         <ul class="footer-links">
           <li><a href="about.html">About</a></li>
           <li><a href="attend.html">Attend a Weekend</a></li>
@@ -176,13 +181,12 @@
       </div>
 
       <div>
-        <h4>Get in Touch</h4>
+        <h2 class="footer-h">Get in Touch</h2>
         <ul class="footer-links">
           <li><a href="contact.html">Contact Us</a></li>
           <li><a href="mailto:chairman@tresdiasstl.org" class="footer-social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5.1 8-5.1V7H4zm16 2.8-8 5.1-8-5.1V17h16V9.8z"/></svg>chairman@tresdiasstl.org</a></li>
-          <!-- FACEBOOK: replace # with your Facebook page address -->
           <li>
-            <a href="#" class="footer-social">
+            <a href="https://www.facebook.com/tresdiasstlouis" class="footer-social" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>
               Facebook
             </a>
@@ -206,12 +210,16 @@
     // Mobile menu open/close
     const toggle = document.querySelector('.nav-toggle');
     const links = document.getElementById('nav-links');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
+    const setMenu = open => {
+      links.classList.toggle('open', open);
       toggle.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open);
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    });
+    };
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && links.classList.contains('open')) { setMenu(false); toggle.focus(); } });
+    document.addEventListener('click', e => { if (links.classList.contains('open') && !e.target.closest('.site-header')) setMenu(false); });
 
     // Light shadow under the header once the page scrolls
     const header = document.querySelector('.site-header');

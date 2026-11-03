@@ -23,8 +23,9 @@ editor for weekend dates and Secuela details.
 3. **Redeploy** (Deployments → ⋯ → Redeploy) so the new settings load.
 4. Go to `/admin.html`, log in, and click **Save Changes** once.
 
+Use a long password (at least 12 characters, e.g. three or four random words).
 To change the password later: edit `ADMIN_PASSWORD` in Vercel and redeploy.
-Everyone is logged out when the password changes.
+Everyone is logged out when the password changes. Logins last 8 hours.
 
 ## How the info flows
 - `js/weekends.js` and `js/secuela.js` hold the starting info. The site uses
@@ -38,4 +39,9 @@ Everyone is logged out when the password changes.
 - Brochure: `files/tres-dias-stl-brochure.pdf` (keep the same name).
 - Applications: in `attend.html`, look for `PAPER APPLICATION` and
   `ONLINE APPLICATION` notes and replace the `#` links.
-- Facebook: in each page's footer, look for the `FACEBOOK` note.
+
+## Other files
+- `404.html` — shown when someone visits an address that doesn't exist.
+- `vercel.json` — basic security and caching settings for Vercel.
+- Contact form: sends through Web3Forms to chairman@tresdiasstl.org
+  (access key is in `contact.html`; it is safe to be public).
