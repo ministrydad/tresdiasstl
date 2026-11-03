@@ -37,8 +37,8 @@ Everyone is logged out when the password changes. Logins last 8 hours.
 
 ## Files to swap
 - Brochure: `files/tres-dias-stl-brochure.pdf` (keep the same name).
-- Applications: in `attend.html`, look for `PAPER APPLICATION` and
-  `ONLINE APPLICATION` notes and replace the `#` links.
+- Paper application: `files/Tres-Dias-of-St-Louis-Application.pdf` (keep the same name).
+- Online application: Team Tools Pro link in `attend.html` (look for `ONLINE APPLICATION`).
 
 ## Other files
 - `404.html` — shown when someone visits an address that doesn't exist.
