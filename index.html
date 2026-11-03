@@ -10,131 +10,273 @@
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="site-header">
-    <div class="container">
-      <a href="index.html" class="site-title">Tres Dias of St. Louis</a>
+  <!-- Shared color blends for the icons -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="td-stroke" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="24">
+        <stop offset="0" stop-color="#4cd06e"/>
+        <stop offset="1" stop-color="#15813a"/>
+      </linearGradient>
+      <linearGradient id="td-fill" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7ee39a" stop-opacity="0.55"/>
+        <stop offset="1" stop-color="#23b149" stop-opacity="0.22"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ===== HEADER (logo + menu in one bar, stays at top) ===== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/cross-logo.png" alt="" class="brand-logo">
+        <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav aria-label="Main">
+        <ul id="nav-links" class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="attend.html">Attend a Weekend</a></li>
+          <li><a href="values.html">Values &amp; Beliefs</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="secuela.html">Secuela</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav class="site-nav" aria-label="Main">
-    <div class="container">
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-      <ul id="nav-links" class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="attend.html">Attend a Weekend</a></li>
-        <li><a href="values.html">Values &amp; Beliefs</a></li>
-        <li><a href="secuela.html">Secuela</a></li>
-      </ul>
-    </div>
-  </nav>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="hero-text">
-      <p class="hero-discover">DISCOVER</p>
-      <h1 class="hero-title"><strong>TRES DIAS</strong> of <strong>ST. LOUIS</strong></h1>
+      <p class="hero-discover">Discover</p>
+      <h1 class="hero-title"><span class="nw"><strong>TRES DIAS</strong> of</span> <span class="nw"><strong>ST. LOUIS</strong></span></h1>
       <img src="images/cross-logo.png" alt="Tres Dias cross" class="hero-cross">
+      <p class="hero-tagline">Connect &nbsp;·&nbsp; Serve &nbsp;·&nbsp; Grow</p>
+      <div class="hero-buttons">
+        <a href="attend.html" class="btn btn-green">Attend a Weekend</a>
+        <a href="#who" class="btn btn-outline">Learn More</a>
+      </div>
     </div>
-    <div class="hero-banner">CONNECT &nbsp;-&nbsp; SERVE &nbsp;-&nbsp; GROW</div>
   </section>
 
   <!-- ===== WHO WE ARE ===== -->
-  <section class="who">
-    <div class="container narrow">
-      <h2>Tres Dias of St. Louis</h2>
-      <p class="who-label">WHO WE ARE</p>
-      <p>We are an organization dedicated to strengthening and extending the Body of Christ by bringing Christians to a closer, more personal walk with the Lord Jesus Christ and encourage them to Christian leadership and Apostolic Action in their environments.</p>
-      <p>Tres Dias of St. Louis is a lay-led movement with active participation of Clergy.&nbsp; We are a non-profit organization and actively seek the participation of people from all the Christian denominations in our area.</p>
+  <section class="who" id="who">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Who We Are</p>
+        <h2>Tres Dias of St. Louis</h2>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="who-text">
+        <p>We are an organization dedicated to strengthening and extending the Body of Christ by bringing Christians to a closer, more personal walk with the Lord Jesus Christ and encourage them to Christian leadership and Apostolic Action in their environments.</p>
+        <p>Tres Dias of St. Louis is a lay-led movement with active participation of Clergy. We are a non-profit organization and actively seek the participation of people from all the Christian denominations in our area.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle class="tone fill" cx="18.2" cy="8.6" r="2.7"/><path class="tone" d="M17.6 14.9c2.6.4 4.4 2.5 4.4 5.1V21"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <h3>Connect</h3>
+          <p>Find Christian friendship and community that lasts long after the weekend ends.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/><path class="tone fill" d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"/></svg>
+          </div>
+          <h3>Serve</h3>
+          <p>Put your faith into action by serving on weekend teams, in your church and in your community.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path class="tone fill" d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path class="tone fill" d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
+          </div>
+          <h3>Grow</h3>
+          <p>Deepen your walk with Jesus Christ through prayer, study and fellowship.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ===== EVENT CARDS ===== -->
+  <!-- ===== UPCOMING WEEKENDS ===== -->
   <section class="events">
-    <article class="card" style="background-image:url('images/mens-weekend.jpg'); background-position: 30% center;">
-      <div class="card-info">
-        <h3>Men's Weekend</h3>
-        <p class="card-sub">#47</p>
-        <p class="card-date">10/15/2026 - 10/18/2026</p>
-        <a href="attend.html" class="card-btn">REGISTER <span class="arrow" aria-hidden="true"></span></a>
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Mark Your Calendar</p>
+        <h2>Upcoming Weekends &amp; Events</h2>
+        <span class="rule" aria-hidden="true"></span>
       </div>
-    </article>
 
-    <article class="card" style="background-image:url('images/womens-weekend.jpg');">
-      <div class="card-info">
-        <h3>Women's Weekend</h3>
-        <p class="card-sub">#47</p>
-        <p class="card-date">11/12/2026 - 11/15/2026</p>
-        <a href="attend.html" class="card-btn">REGISTER <span class="arrow" aria-hidden="true"></span></a>
-      </div>
-    </article>
+      <div class="cards">
+        <article class="card" data-next="men">
+          <div class="card-img" style="background-image:url('images/mens-weekend.jpg'); background-position: 30% center;"></div>
+          <div class="card-body">
+            <p class="card-tag" data-field="tag">Weekend #47</p>
+            <h3>Men's Weekend</h3>
+            <p class="card-meta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              <span data-field="date">Oct 15 – 18, 2026</span>
+            </p>
+            <a href="attend.html" class="btn btn-green btn-small">Register <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+        </article>
 
-    <article class="card" style="background-image:url('images/secuela.jpg');">
-      <div class="card-info">
-        <h3>Secuela Information</h3>
-        <p class="card-sub">July 18th, 2026</p>
-        <p class="card-date">Route 66 State Park</p>
-        <a href="secuela.html" class="card-btn">MORE INFO <span class="arrow" aria-hidden="true"></span></a>
+        <article class="card" data-next="women">
+          <div class="card-img" style="background-image:url('images/womens-weekend.jpg');"></div>
+          <div class="card-body">
+            <p class="card-tag" data-field="tag">Weekend #47</p>
+            <h3>Women's Weekend</h3>
+            <p class="card-meta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              <span data-field="date">Nov 12 – 15, 2026</span>
+            </p>
+            <a href="attend.html" class="btn btn-green btn-small">Register <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img" style="background-image:url('images/secuela.jpg');"></div>
+          <div class="card-body">
+            <p class="card-tag">Community Gathering</p>
+            <h3>Secuela</h3>
+            <p class="card-meta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              July 18, 2026
+            </p>
+            <p class="card-meta">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
+              Route 66 State Park
+            </p>
+            <a href="secuela.html" class="btn btn-green btn-small">More Info <span class="arrow" aria-hidden="true"></span></a>
+          </div>
+        </article>
       </div>
-    </article>
+    </div>
   </section>
 
   <!-- ===== NEWSLETTER (Mailchimp) ===== -->
   <section class="newsletter">
     <div class="nl-box">
-      <span class="nl-dash" aria-hidden="true"></span>
-      <p class="nl-kicker">TRES DIAS OF ST. LOUIS</p>
+      <span class="rule" aria-hidden="true"></span>
+      <p class="eyebrow">Tres Dias of St. Louis</p>
       <h2>Stay Connected - Join Our Newsletter</h2>
-      <p class="nl-intro">Get weekend dates, <span class="hl-blue">Secuela news</span>, and<br>ways to serve — sent to your <span class="hl-orange">Inbox</span>.</p>
+      <p class="nl-intro">Get weekend dates, Secuela news, and ways to serve — sent to your inbox.</p>
 
-      <!--
-        MAILCHIMP: replace the action URL below with the one from your
-        Mailchimp "Embedded form" code (Audience > Signup forms > Embedded forms).
-        It looks like: https://XXXX.us21.list-manage.com/subscribe/post?u=XXXX&amp;id=XXXX
-        Also replace the hidden "bot" field name with the one Mailchimp gives you (b_XXXX_XXXX).
-      -->
-      <form action="https://YOUR-ACCOUNT.list-manage.com/subscribe/post?u=XXXX&amp;id=XXXX"
+      <!-- Mailchimp signup: sends to the Tres Dias of St. Louis audience -->
+      <form action="https://tresdias-stl.us16.list-manage.com/subscribe/post?u=345d3a33bf948f589ea561836&amp;id=e69cf4bc3b&amp;f_id=00ebd9e3f0"
             method="post" target="_blank" class="nl-form" novalidate>
         <label for="mce-EMAIL">Email address <span class="req">*</span></label>
-        <input type="email" id="mce-EMAIL" name="EMAIL" placeholder="you@example.com" required>
+        <input type="email" id="mce-EMAIL" name="EMAIL" placeholder="you@example.com" autocomplete="email" required>
 
         <div class="nl-row">
           <div>
             <label for="mce-FNAME">First name</label>
-            <input type="text" id="mce-FNAME" name="FNAME" placeholder="First">
+            <input type="text" id="mce-FNAME" name="FNAME" placeholder="First" autocomplete="given-name">
           </div>
           <div>
             <label for="mce-LNAME">Last name</label>
-            <input type="text" id="mce-LNAME" name="LNAME" placeholder="Last">
+            <input type="text" id="mce-LNAME" name="LNAME" placeholder="Last" autocomplete="family-name">
           </div>
         </div>
 
-        <!-- Spam-bot trap from Mailchimp; keep hidden -->
+        <!-- Anti-bot trap from Mailchimp: leave exactly as is -->
         <div style="position:absolute; left:-5000px;" aria-hidden="true">
-          <input type="text" name="b_XXXX_XXXX" tabindex="-1" value="">
+          <input type="text" name="b_345d3a33bf948f589ea561836_e69cf4bc3b" tabindex="-1" value="">
         </div>
 
-        <button type="submit">JOIN OUR LIST</button>
+        <button type="submit" name="subscribe">Join Our List</button>
       </form>
 
-      <hr>
-      <p class="nl-tagline">connect <span>·</span> serve <span>·</span> grow</p>
       <p class="nl-fine">We use your email only to share Tres Dias news. Unsubscribe anytime.</p>
     </div>
   </section>
 
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand brand-light">
+          <img src="images/cross-logo.png" alt="" class="brand-logo">
+          <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
+        </a>
+        <p>A lay-led Christian movement strengthening and extending the Body of Christ in the St. Louis area.</p>
+        <p class="footer-motto">Connect · Serve · Grow</p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="attend.html">Attend a Weekend</a></li>
+          <li><a href="values.html">Values &amp; Beliefs</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="secuela.html">Secuela</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Get in Touch</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="mailto:chairman@tresdiasstl.org" class="footer-social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5.1 8-5.1V7H4zm16 2.8-8 5.1-8-5.1V17h16V9.8z"/></svg>chairman@tresdiasstl.org</a></li>
+          <!-- FACEBOOK: replace # with your Facebook page address -->
+          <li>
+            <a href="#" class="footer-social">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>
+              Facebook
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> Tres Dias of St. Louis. All rights reserved.</p>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/weekends.js"></script>
+  <script>
+    // Show the next Men's and Women's weekend from js/weekends.js
+    document.querySelectorAll('[data-next]').forEach(card => {
+      const w = TD.upcoming(card.dataset.next)[0];
+      if (!w) {
+        card.querySelector('[data-field="tag"]').textContent = 'Coming Soon';
+        card.querySelector('[data-field="date"]').textContent = 'New dates coming soon';
+        return;
+      }
+      card.querySelector('[data-field="tag"]').textContent = 'Weekend #' + w.number;
+      card.querySelector('[data-field="date"]').textContent = TD.range(w);
+    });
+  </script>
   <script>
     // Mobile menu open/close
     const toggle = document.querySelector('.nav-toggle');
     const links = document.getElementById('nav-links');
     toggle.addEventListener('click', () => {
       const open = links.classList.toggle('open');
+      toggle.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
+
+    // Light shadow under the header once the page scrolls
+    const header = document.querySelector('.site-header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Keep the copyright year current
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

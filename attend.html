@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attend a Weekend | Tres Dias of St. Louis</title>
+  <meta name="description" content="Upcoming Tres Dias of St. Louis weekend dates, who can attend, and how to apply with a sponsor.">
+  <link rel="icon" type="image/png" href="images/cross-logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Shared color blends for the icons -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="td-stroke" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="24" y2="24">
+        <stop offset="0" stop-color="#4cd06e"/>
+        <stop offset="1" stop-color="#15813a"/>
+      </linearGradient>
+      <linearGradient id="td-fill" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#7ee39a" stop-opacity="0.55"/>
+        <stop offset="1" stop-color="#23b149" stop-opacity="0.22"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ===== HEADER (logo + menu in one bar, stays at top) ===== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/cross-logo.png" alt="" class="brand-logo">
+        <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav aria-label="Main">
+        <ul id="nav-links" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="attend.html" class="active">Attend a Weekend</a></li>
+          <li><a href="values.html">Values &amp; Beliefs</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="secuela.html">Secuela</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE BANNER ===== -->
+  <section class="page-hero" style="background-image: linear-gradient(180deg, rgba(10,14,12,0.55), rgba(10,14,12,0.62)), url('images/womens-weekend.jpg'); background-position: center 35%;">
+    <div class="container">
+      <p class="eyebrow eyebrow-light">Three Days With Christ</p>
+      <h1>Attend a Weekend</h1>
+      <span class="rule" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ===== HOW TO ATTEND ===== -->
+  <section class="about-intro">
+    <div class="container narrow-center">
+      <h2 class="h2-plain">Would you like to attend?</h2>
+      <p class="lead">Attending is easy! First, you must have a sponsor. A sponsor is someone who has attended a Tres Dias weekend before. Next, once you have a sponsor, you can fill out our application, give that back to your sponsor and he or she will take care of the rest!</p>
+
+      <ol class="steps" aria-label="How to attend">
+        <li><span>1</span>Find a sponsor</li>
+        <li><span>2</span>Fill out the application</li>
+        <li><span>3</span>Give it to your sponsor</li>
+      </ol>
+
+      <div class="btn-row">
+        <!-- PAPER APPLICATION: replace # with the PDF (for example: files/application.pdf) -->
+        <a href="#" class="btn btn-green" target="_blank" rel="noopener">Paper Application</a>
+        <!-- ONLINE APPLICATION: replace # with the online form link -->
+        <a href="#" class="btn btn-dark-outline" target="_blank" rel="noopener">Online Application</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UPCOMING WEEKENDS (dates come from js/weekends.js) ===== -->
+  <section class="who weekends" id="weekends">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Mark Your Calendar</p>
+        <h2>Upcoming Weekends</h2>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="wk-cols">
+        <div class="wk-col">
+          <h3 class="wk-title">Men's Weekends</h3>
+          <div class="wk-list" data-weekends="men"></div>
+        </div>
+        <div class="wk-col">
+          <h3 class="wk-title">Women's Weekends</h3>
+          <div class="wk-list" data-weekends="women"></div>
+        </div>
+      </div>
+      <p class="wk-note">Each weekend begins Thursday evening and ends Sunday evening.</p>
+    </div>
+  </section>
+
+  <!-- ===== BEFORE YOU APPLY ===== -->
+  <section class="split">
+    <div class="container split-inner">
+      <div class="split-img" style="background-image:url('images/guitar.jpg'); background-position: center;" role="img" aria-label="Friends singing with a guitar"></div>
+      <div class="split-text">
+        <p class="eyebrow">Before You Apply</p>
+        <h2>Who Can Be a Candidate</h2>
+        <span class="rule rule-left" aria-hidden="true"></span>
+        <p>A Christian who is at least 21 years old and has not attended Tres Dias (or a similar three day weekend) can apply to become a candidate if they are sponsored by someone who has attended. Attendance is prioritized by the time stamp on an application, and the waiting period can be from several months to a year or more. Men and women attend different weekends; husbands are encouraged to attend first if the candidate is married.</p>
+        <p class="small-note">Usually candidates attend a Tres Dias weekend in the area where they live so they can be in a small group with people they know. If you live in a different area, you may want to look for a community near you at <a href="https://www.tresdias.org" target="_blank" rel="noopener">www.tresdias.org</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUESTIONS ===== -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Learn More</p>
+        <h2>About the Weekend</h2>
+        <span class="rule" aria-hidden="true"></span>
+      </div>
+
+      <div class="faq-item">
+        <h3>What happens on a Tres Dias weekend?</h3>
+        <div class="faq-body">
+          <p>The Spanish words “Tres Dias” mean “Three Days.” Tres Dias begins on a Thursday evening and ends the following Sunday evening.</p>
+          <p>The Tres Dias team leading the weekend is composed of former attendees of a Tres Dias or similar weekend like Cursillo or Walk to Emmaus, who have volunteered their time for months of preparation by working and praying together as a unit.</p>
+          <p>There is presented in three days the basics of the Christian life and the meaning of living the Christian ideal and its application in our daily lives. Tres Dias is centered around lay and clergy talks. Table groups discuss each talk. Discourse that develops from these discussions makes Christ’s teachings come alive.</p>
+          <p>The basic atmosphere of Tres Dias is one of love, joy, Christian fellowship, singing, laughing, and worship. Tres Dias makes future Christian experiences more fruitful because it fosters a new revelation to the reality of Jesus Christ in our lives.</p>
+          <p>A Tres Dias encounter is completed only once in a lifetime. Therefore, it is not a substitute for a retreat; nor does it have the personal solitude of a retreat.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>Who should attend a Tres Dias weekend?</h3>
+        <div class="faq-body">
+          <p>Just as Christ meets you at your point of need, so Tres Dias is designed for those who desire to be strengthened in their faith and to be brought closer to Christ in their discipleship. Tres Dias is for Christians of all denominations. The weekend is not necessarily for new believers, but for those who understand God’s grace. It is especially gratifying for those who are in leadership within the church.</p>
+          <p>There are weekends for men and women. If you are married, the husband (based on biblical principles) should attend first. Wives usually attend a week or two later. Someone who has previously attended a Tres Dias or similar weekend must sponsor each attendee.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>What is the Fourth Day?</h3>
+        <div class="faq-body">
+          <p>One’s life after a Tres Dias weekend is called the Fourth Day. Following Tres Dias, an individual may desire to continue in the strengthening of his or her spiritual life and become a more active disciple of Jesus Christ. Pursuing a relationship with Christ is important. Continued contact with the Tres Dias Community members on a regular basis will enhance this growth. Reunions of small accountability groups (2 to 6 people) are also encouraged so that the participants may help one another in living a fruitful Christian life. However, Tres Dias is not a church; rather, Tres Dias encourages that we all become more active in our local churches on the Fourth Day.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>How may I attend a Tres Dias weekend?</h3>
+        <div class="faq-body">
+          <p>All potential Tres Dias attendees must be sponsored. You can obtain an application form below.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CALL TO ACTION ===== -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Ready to Apply?</h2>
+      <p>Talk with your sponsor, then fill out an application.</p>
+      <div class="btn-row">
+        <!-- Same links as the buttons near the top of the page -->
+        <a href="#" class="btn btn-white" target="_blank" rel="noopener">Paper Application</a>
+        <a href="#" class="btn btn-outline" target="_blank" rel="noopener">Online Application</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand brand-light">
+          <img src="images/cross-logo.png" alt="" class="brand-logo">
+          <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
+        </a>
+        <p>A lay-led Christian movement strengthening and extending the Body of Christ in the St. Louis area.</p>
+        <p class="footer-motto">Connect · Serve · Grow</p>
+      </div>
+
+      <div>
+        <h4>Explore</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="attend.html">Attend a Weekend</a></li>
+          <li><a href="values.html">Values &amp; Beliefs</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="secuela.html">Secuela</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Get in Touch</h4>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="mailto:chairman@tresdiasstl.org" class="footer-social"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.4l8 5.1 8-5.1V7H4zm16 2.8-8 5.1-8-5.1V17h16V9.8z"/></svg>chairman@tresdiasstl.org</a></li>
+          <!-- FACEBOOK: replace # with your Facebook page address -->
+          <li>
+            <a href="#" class="footer-social">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.6c0-.4.3-.6.6-.6z"/></svg>
+              Facebook
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> Tres Dias of St. Louis. All rights reserved.</p>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/weekends.js"></script>
+  <script>
+    // Build the weekend date cards from js/weekends.js
+    const MON = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    document.querySelectorAll('[data-weekends]').forEach(list => {
+      const type = list.dataset.weekends;
+      const items = TD_WEEKENDS
+        .filter(w => w.type === type)
+        .sort((a, b) => TD.parse(a.start) - TD.parse(b.start));
+      const nextIndex = items.findIndex(w => TD.parse(w.end) >= today);
+      list.innerHTML = items.map((w, i) => {
+        const a = TD.parse(w.start), b = TD.parse(w.end);
+        const passed = b < today;
+        const days = a.getMonth() === b.getMonth() ? `${a.getDate()}–${b.getDate()}` : `${a.getDate()}`;
+        const cls = passed ? ' is-past' : (i === nextIndex ? ' is-next' : '');
+        return `
+          <article class="wk-row${cls}">
+            <span class="wk-num">${w.number}</span>
+            <div class="wk-info">
+              <h4>${type === 'men' ? "Men's" : "Women's"} Weekend #${w.number}</h4>
+              <p>${TD.range(w)}</p>
+            </div>
+            <span class="wk-status">${passed ? 'Weekend Passed' : (i === nextIndex ? 'Next Weekend' : '')}</span>
+          </article>`;
+      }).join('');
+    });
+  </script>
+  <script>
+    // Mobile menu open/close
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+
+    // Light shadow under the header once the page scrolls
+    const header = document.querySelector('.site-header');
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Keep the copyright year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
