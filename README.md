@@ -45,3 +45,10 @@ Everyone is logged out when the password changes. Logins last 8 hours.
 - `vercel.json` — basic security and caching settings for Vercel.
 - Contact form: sends through Web3Forms to chairman@tresdiasstl.org
   (access key is in `contact.html`; it is safe to be public).
+
+## Sharing and search
+- Share image: `images/share.jpg` (1200×630), used when links are posted on
+  Facebook, in texts, etc. Icons: `favicon.ico` and `images/`.
+- `sitemap.xml` and `robots.txt` help Google; the admin page is kept out.
+- `vercel.json` also redirects old Wix addresses (like /about) to the new pages.
+- Main address used in these files: https://tresdiasstl.org

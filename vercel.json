@@ -3,24 +3,117 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     },
     {
       "source": "/admin.html",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" },
-        { "key": "Cache-Control", "value": "no-store" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
       ]
     },
     {
       "source": "/(fonts|images)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/about",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/team.html",
+      "permanent": true
+    },
+    {
+      "source": "/team-registration",
+      "destination": "/team.html",
+      "permanent": true
+    },
+    {
+      "source": "/secuela",
+      "destination": "/secuela.html",
+      "permanent": true
+    },
+    {
+      "source": "/values",
+      "destination": "/values.html",
+      "permanent": true
+    },
+    {
+      "source": "/values-beliefs",
+      "destination": "/values.html",
+      "permanent": true
+    },
+    {
+      "source": "/values-and-beliefs",
+      "destination": "/values.html",
+      "permanent": true
+    },
+    {
+      "source": "/statement-of-beliefs",
+      "destination": "/values.html",
+      "permanent": true
+    },
+    {
+      "source": "/attend",
+      "destination": "/attend.html",
+      "permanent": true
+    },
+    {
+      "source": "/attend-a-weekend",
+      "destination": "/attend.html",
+      "permanent": true
+    },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
