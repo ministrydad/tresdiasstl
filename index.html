@@ -140,18 +140,18 @@
           </div>
         </article>
 
-        <article class="card">
+        <article class="card" data-secuela>
           <div class="card-img" style="background-image:url('images/secuela.jpg');"></div>
           <div class="card-body">
             <p class="card-tag">Community Gathering</p>
-            <h3>Secuela</h3>
+            <h3 data-sf="title">Secuela</h3>
             <p class="card-meta">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-              July 18, 2026
+              <span data-sf="date">July 18, 2026</span>
             </p>
             <p class="card-meta">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>
-              Route 66 State Park
+              <span data-sf="place">Route 66 State Park</span>
             </p>
             <a href="secuela.html" class="btn btn-green btn-small">More Info <span class="arrow" aria-hidden="true"></span></a>
           </div>
@@ -245,6 +245,7 @@
   </footer>
 
   <script src="js/weekends.js"></script>
+  <script src="js/secuela.js"></script>
   <script>
     // Show the next Men's and Women's weekend from js/weekends.js
     document.querySelectorAll('[data-next]').forEach(card => {
@@ -257,6 +258,16 @@
       card.querySelector('[data-field="tag"]').textContent = 'Weekend #' + w.number;
       card.querySelector('[data-field="date"]').textContent = TD.range(w);
     });
+
+    // Secuela card from js/secuela.js
+    (function () {
+      const S = window.TD_SECUELA, card = document.querySelector('[data-secuela]');
+      if (!S || !card) return;
+      const [y, m, d] = S.date.split('-').map(Number);
+      card.querySelector('[data-sf="title"]').textContent = S.title;
+      card.querySelector('[data-sf="date"]').textContent = new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      card.querySelector('[data-sf="place"]').textContent = S.place;
+    })();
   </script>
   <script>
     // Mobile menu open/close
