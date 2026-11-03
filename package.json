@@ -1,0 +1,9 @@
+{
+  "name": "tresdiasstl",
+  "private": true,
+  "type": "module",
+  "description": "Tres Dias of St. Louis website. Static pages plus a small admin editor (api/).",
+  "dependencies": {
+    "@vercel/blob": "^2.8.2"
+  }
+}

@@ -216,38 +216,47 @@
     <div class="footer-bottom">
       <div class="container">
         <p>&copy; <span id="year">2026</span> Tres Dias of St. Louis. All rights reserved.</p>
-        <a href="#top">Back to top ↑</a>
+        <div class="footer-bottom-links">
+          <a href="admin.html">Team Login</a>
+          <a href="#top">Back to top ↑</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script src="js/weekends.js"></script>
+  <script src="js/content.js"></script>
   <script>
-    // Build the weekend date cards from js/weekends.js
-    const MON = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
-    const today = new Date(); today.setHours(0, 0, 0, 0);
-    document.querySelectorAll('[data-weekends]').forEach(list => {
-      const type = list.dataset.weekends;
-      const items = TD_WEEKENDS
-        .filter(w => w.type === type)
-        .sort((a, b) => TD.parse(a.start) - TD.parse(b.start));
-      const nextIndex = items.findIndex(w => TD.parse(w.end) >= today);
-      list.innerHTML = items.map((w, i) => {
-        const a = TD.parse(w.start), b = TD.parse(w.end);
-        const passed = b < today;
-        const days = a.getMonth() === b.getMonth() ? `${a.getDate()}–${b.getDate()}` : `${a.getDate()}`;
-        const cls = passed ? ' is-past' : (i === nextIndex ? ' is-next' : '');
-        return `
-          <article class="wk-row${cls}">
-            <span class="wk-num">${w.number}</span>
-            <div class="wk-info">
-              <h4>${type === 'men' ? "Men's" : "Women's"} Weekend #${w.number}</h4>
-              <p>${TD.range(w)}</p>
-            </div>
-            <span class="wk-status">${passed ? 'Weekend Passed' : (i === nextIndex ? 'Next Weekend' : '')}</span>
-          </article>`;
-      }).join('');
-    });
+    function renderContent() {
+      // Build the weekend date cards from js/weekends.js
+      const MON = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      document.querySelectorAll('[data-weekends]').forEach(list => {
+        const type = list.dataset.weekends;
+        const items = TD_WEEKENDS
+          .filter(w => w.type === type)
+          .sort((a, b) => TD.parse(a.start) - TD.parse(b.start));
+        const nextIndex = items.findIndex(w => TD.parse(w.end) >= today);
+        list.innerHTML = items.map((w, i) => {
+          const a = TD.parse(w.start), b = TD.parse(w.end);
+          const passed = b < today;
+          const days = a.getMonth() === b.getMonth() ? `${a.getDate()}–${b.getDate()}` : `${a.getDate()}`;
+          const cls = passed ? ' is-past' : (i === nextIndex ? ' is-next' : '');
+          return `
+            <article class="wk-row${cls}">
+              <span class="wk-num">${w.number}</span>
+              <div class="wk-info">
+                <h4>${type === 'men' ? "Men's" : "Women's"} Weekend #${TDesc(w.number)}</h4>
+                <p>${TD.range(w)}</p>
+              </div>
+              <span class="wk-status">${passed ? 'Weekend Passed' : (i === nextIndex ? 'Next Weekend' : '')}</span>
+            </article>`;
+        }).join('');
+      });
+    }
+    renderContent();
+    // Show any newer details saved from the admin page
+    TDContent.ready.then(d => { if (d) renderContent(); });
   </script>
   <script>
     // Mobile menu open/close

@@ -1,30 +1,41 @@
 # Tres Dias of St. Louis — Website
 
-Plain HTML + CSS. No build step needed.
+Plain HTML + CSS pages, hosted on Vercel, with a small password-protected
+editor for weekend dates and Secuela details.
 
-## Folder layout
-```
-index.html        Home page
-css/styles.css    All the styling
-fonts/            Raleway, Barlow, Oswald (stored here so they always load)
-images/           All photos and the cross logo
-```
+## Pages
+| File            | Page                |
+|-----------------|---------------------|
+| index.html      | Home                |
+| about.html      | About               |
+| attend.html     | Attend a Weekend    |
+| values.html     | Values & Beliefs    |
+| team.html       | Team (Square fee)   |
+| secuela.html    | Secuela             |
+| admin.html      | Team Login / editor |
 
-## Put it on GitHub + Vercel
-1. Create a new repository on GitHub (for example `tresdias-stl`).
-2. Upload everything in this folder to it (drag and drop works on github.com).
-3. In Vercel, click **Add New → Project**, pick the repository, and click **Deploy**.
-   Leave the settings at their defaults. "Framework Preset" should say **Other**.
-4. To use your own web address, open the project in Vercel → **Settings → Domains**
-   and add `tresdiasstl.org` (and `www.tresdiasstl.org`). Vercel shows the DNS records to enter.
+## Team editor (one-time setup in Vercel)
+1. Open the project in Vercel → **Storage** → **Create** → **Blob**.
+   Choose **Private**, then connect it to this project (all environments).
+   This adds `BLOB_READ_WRITE_TOKEN` automatically.
+2. Project → **Settings → Environment Variables** → add
+   `ADMIN_PASSWORD` = the team password. Apply to all environments.
+3. **Redeploy** (Deployments → ⋯ → Redeploy) so the new settings load.
+4. Go to `/admin.html`, log in, and click **Save Changes** once.
 
-## Before going live
-- **Newsletter form:** in `index.html`, look for the `MAILCHIMP` note and paste in your
-  form address from Mailchimp (Audience → Signup forms → Embedded forms).
-- **Other pages:** the menu links to `contact.html`, `about.html`, `team.html`,
-  `attend.html`, `values.html` and `secuela.html`. These still need to be built.
-- **Event cards:** dates and text are in `index.html` under "EVENT CARDS".
+To change the password later: edit `ADMIN_PASSWORD` in Vercel and redeploy.
+Everyone is logged out when the password changes.
 
-## Unused photos (for other pages)
-campfire.jpg, marshmallow.jpg, holding-hands.jpg, guitar.jpg, grill.jpg,
-football.jpg, football-small.jpg
+## How the info flows
+- `js/weekends.js` and `js/secuela.js` hold the starting info. The site uses
+  these until something is saved from the editor (and as a backup if storage
+  is ever unreachable).
+- After saving, the pages read the saved info from `/api/content`.
+  Changes appear within about a minute.
+- `api/` holds the small server functions (login, logout, load/save).
+
+## Files to swap
+- Brochure: `files/tres-dias-stl-brochure.pdf` (keep the same name).
+- Applications: in `attend.html`, look for `PAPER APPLICATION` and
+  `ONLINE APPLICATION` notes and replace the `#` links.
+- Facebook: in each page's footer, look for the `FACEBOOK` note.

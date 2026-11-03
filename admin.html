@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Team Login | Tres Dias of St. Louis</title>
+  <link rel="icon" type="image/png" href="images/cross-logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin">
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="images/cross-logo.png" alt="" class="brand-logo">
+        <span class="brand-name">Tres Dias <span>of St. Louis</span></span>
+      </a>
+      <div class="admin-top">
+        <a href="index.html" class="admin-link">View website</a>
+        <button type="button" class="admin-link" id="logout" hidden>Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== LOGIN ===== -->
+  <main id="login-view" class="admin-login" hidden>
+    <form id="login-form" class="pay-card">
+      <div class="pillar-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle class="tone fill" cx="12" cy="16" r="1.6"/></svg>
+      </div>
+      <h2>Team Login</h2>
+      <p>Log in to update weekend dates and Secuela details.</p>
+      <label class="a-label" for="pw">Password</label>
+      <input class="a-input" type="password" id="pw" autocomplete="current-password" required>
+      <p class="a-error" id="login-error" role="alert"></p>
+      <button class="btn btn-green a-full" type="submit">Log In</button>
+    </form>
+  </main>
+
+  <!-- ===== EDITOR ===== -->
+  <main id="edit-view" hidden>
+    <div class="container admin-wrap">
+      <div class="admin-head">
+        <p class="eyebrow">Team Editor</p>
+        <h1>Update the Website</h1>
+        <p class="a-muted">Changes show on the website within about a minute after you save.</p>
+      </div>
+
+      <!-- Weekends -->
+      <section class="a-card">
+        <div class="a-card-head">
+          <div>
+            <h2>Weekends</h2>
+            <p class="a-muted">The site shows every weekend listed here. Past weekends are marked "Weekend Passed".</p>
+          </div>
+        </div>
+
+        <div class="a-cols">
+          <div>
+            <h3>Men's Weekends</h3>
+            <div id="men-rows"></div>
+            <button type="button" class="a-add" data-add="men">+ Add men's weekend</button>
+          </div>
+          <div>
+            <h3>Women's Weekends</h3>
+            <div id="women-rows"></div>
+            <button type="button" class="a-add" data-add="women">+ Add women's weekend</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Secuela -->
+      <section class="a-card">
+        <div class="a-card-head">
+          <div>
+            <h2>Secuela</h2>
+            <p class="a-muted">Shown on the Secuela page and on the Home page card.</p>
+          </div>
+        </div>
+
+        <div class="a-grid">
+          <div class="a-field a-span2">
+            <label class="a-label" for="s-title">Event name</label>
+            <input class="a-input" id="s-title" placeholder="Summer Secuela">
+          </div>
+          <div class="a-field a-span2">
+            <label class="a-label" for="s-note">Status line <span class="a-muted">(optional)</span></label>
+            <input class="a-input" id="s-note" placeholder="Still scheduled…">
+          </div>
+          <div class="a-field">
+            <label class="a-label" for="s-date">Date</label>
+            <input class="a-input" type="date" id="s-date">
+          </div>
+          <div class="a-field a-time">
+            <div>
+              <label class="a-label" for="s-start">Start time</label>
+              <input class="a-input" type="time" id="s-start">
+            </div>
+            <div>
+              <label class="a-label" for="s-end">End time</label>
+              <input class="a-input" type="time" id="s-end">
+            </div>
+          </div>
+          <div class="a-field a-span2">
+            <label class="a-label" for="s-place">Location name</label>
+            <input class="a-input" id="s-place" placeholder="Route 66 State Park">
+          </div>
+          <div class="a-field">
+            <label class="a-label" for="s-address">Street address</label>
+            <input class="a-input" id="s-address" placeholder="97 North Outer Rd. East">
+          </div>
+          <div class="a-field">
+            <label class="a-label" for="s-city">City, state, ZIP</label>
+            <input class="a-input" id="s-city" placeholder="Eureka, MO 63025">
+          </div>
+        </div>
+
+        <h3 class="a-sub">What to Bring</h3>
+        <div id="bring-rows"></div>
+        <button type="button" class="a-add" id="add-bring">+ Add a row</button>
+      </section>
+
+      <div class="a-savebar">
+        <p class="a-status" id="status" role="status"></p>
+        <button class="btn btn-green" id="save" type="button">Save Changes</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/weekends.js"></script>
+  <script src="js/secuela.js"></script>
+  <script>
+    const $ = id => document.getElementById(id);
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    // "11:00 AM" <-> "11:00"
+    const to24 = t => { const m = String(t || '').match(/(\d+):(\d+)\s*(AM|PM)/i); if (!m) return ''; let h = +m[1] % 12; if (/pm/i.test(m[3])) h += 12; return String(h).padStart(2, '0') + ':' + m[2]; };
+    const to12 = t => { if (!t) return ''; let [h, m] = t.split(':').map(Number); const ap = h >= 12 ? 'PM' : 'AM'; h = h % 12 || 12; return `${h}:${String(m).padStart(2, '0')} ${ap}`; };
+
+    let dirty = false;
+    const markDirty = () => { dirty = true; setStatus('You have unsaved changes.', ''); };
+    window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+    function setStatus(msg, kind) {
+      const el = $('status');
+      el.innerHTML = msg;
+      el.className = 'a-status' + (kind ? ' is-' + kind : '');
+    }
+
+    // ---------- Weekend rows ----------
+    function weekendRow(w) {
+      const row = document.createElement('div');
+      row.className = 'a-row';
+      row.dataset.type = w.type;
+      row.innerHTML = `
+        <div class="a-field a-num">
+          <label class="a-label">#</label>
+          <input class="a-input" type="number" min="1" data-k="number" value="${esc(w.number)}">
+        </div>
+        <div class="a-field">
+          <label class="a-label">Starts</label>
+          <input class="a-input" type="date" data-k="start" value="${esc(w.start)}">
+        </div>
+        <div class="a-field">
+          <label class="a-label">Ends</label>
+          <input class="a-input" type="date" data-k="end" value="${esc(w.end)}">
+        </div>
+        <button type="button" class="a-remove" aria-label="Remove this weekend" title="Remove">&times;</button>`;
+      row.querySelector('.a-remove').onclick = () => { if (confirm('Remove this weekend?')) { row.remove(); markDirty(); } };
+      return row;
+    }
+
+    function bringRow(b) {
+      const row = document.createElement('div');
+      row.className = 'a-row a-bring';
+      row.innerHTML = `
+        <div class="a-field a-letters">
+          <label class="a-label">Last names</label>
+          <input class="a-input" data-k="letters" placeholder="A–D" value="${esc(b.letters)}">
+        </div>
+        <div class="a-field">
+          <label class="a-label">Bring</label>
+          <input class="a-input" data-k="item" placeholder="Hamburger buns" value="${esc(b.item)}">
+        </div>
+        <button type="button" class="a-remove" aria-label="Remove this row" title="Remove">&times;</button>`;
+      row.querySelector('.a-remove').onclick = () => { row.remove(); markDirty(); };
+      return row;
+    }
+
+    function fill(data) {
+      const weekends = (data.weekends || []).slice().sort((a, b) => a.start.localeCompare(b.start));
+      ['men', 'women'].forEach(t => {
+        const box = $(t + '-rows'); box.innerHTML = '';
+        weekends.filter(w => w.type === t).forEach(w => box.appendChild(weekendRow(w)));
+      });
+      const s = data.secuela || {};
+      $('s-title').value = s.title || '';
+      $('s-note').value = s.note || '';
+      $('s-date').value = s.date || '';
+      $('s-start').value = to24(s.start);
+      $('s-end').value = to24(s.end);
+      $('s-place').value = s.place || '';
+      $('s-address').value = s.address || '';
+      $('s-city').value = s.city || '';
+      const br = $('bring-rows'); br.innerHTML = '';
+      (s.bring || []).forEach(b => br.appendChild(bringRow(b)));
+      dirty = false;
+    }
+
+    function collect() {
+      const weekends = [];
+      ['men', 'women'].forEach(t => {
+        $(t + '-rows').querySelectorAll('.a-row').forEach(r => {
+          weekends.push({
+            type: t,
+            number: r.querySelector('[data-k="number"]').value,
+            start: r.querySelector('[data-k="start"]').value,
+            end: r.querySelector('[data-k="end"]').value
+          });
+        });
+      });
+      const bring = [...$('bring-rows').querySelectorAll('.a-row')].map(r => ({
+        letters: r.querySelector('[data-k="letters"]').value,
+        item: r.querySelector('[data-k="item"]').value
+      }));
+      return {
+        weekends,
+        secuela: {
+          title: $('s-title').value, note: $('s-note').value, date: $('s-date').value,
+          start: to12($('s-start').value), end: to12($('s-end').value),
+          place: $('s-place').value, address: $('s-address').value, city: $('s-city').value,
+          bring
+        }
+      };
+    }
+
+    document.querySelectorAll('[data-add]').forEach(btn => btn.onclick = () => {
+      const t = btn.dataset.add, box = $(t + '-rows');
+      const nums = [...document.querySelectorAll('#men-rows [data-k="number"], #women-rows [data-k="number"]')].map(i => +i.value || 0);
+      box.appendChild(weekendRow({ type: t, number: nums.length ? Math.max(...nums) + 1 : '', start: '', end: '' }));
+      markDirty();
+    });
+    $('add-bring').onclick = () => { $('bring-rows').appendChild(bringRow({ letters: '', item: '' })); markDirty(); };
+    document.addEventListener('input', e => { if (e.target.closest('#edit-view')) markDirty(); });
+
+    // ---------- Save ----------
+    $('save').onclick = async () => {
+      const btn = $('save');
+      btn.disabled = true; setStatus('Saving…', '');
+      try {
+        const r = await fetch('/api/content', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(collect()) });
+        const d = await r.json().catch(() => ({}));
+        if (r.status === 401) { showLogin('Your login timed out. Please log in again — your changes are still on this page.'); return; }
+        if (!r.ok) {
+          setStatus(esc(d.error || 'Saving failed.') + (d.details ? '<ul>' + d.details.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : ''), 'error');
+          return;
+        }
+        fill(d.content);
+        setStatus('Saved! The website will show the changes within about a minute.', 'ok');
+      } catch {
+        setStatus('Could not reach the server. Check your internet connection and try again.', 'error');
+      } finally { btn.disabled = false; }
+    };
+
+    // ---------- Login / logout ----------
+    function showLogin(msg) {
+      $('login-view').hidden = false;
+      $('logout').hidden = true;
+      $('login-error').textContent = msg || '';
+      $('pw').focus();
+    }
+    async function showEditor() {
+      $('login-view').hidden = true;
+      $('edit-view').hidden = false;
+      $('logout').hidden = false;
+      if ($('men-rows').children.length || $('women-rows').children.length) return; // keep unsaved work after re-login
+      let data = null;
+      try { const r = await fetch('/api/content', { cache: 'no-store' }); if (r.ok) data = await r.json(); } catch {}
+      fill(data || { weekends: window.TD_WEEKENDS, secuela: window.TD_SECUELA });
+      if (!data) setStatus('Nothing has been saved here yet. These are the current details from the website.', '');
+    }
+
+    $('login-form').onsubmit = async e => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.disabled = true; $('login-error').textContent = '';
+      try {
+        const r = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: $('pw').value }) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) { $('login-error').textContent = d.error || 'Login failed.'; return; }
+        $('pw').value = '';
+        showEditor();
+      } catch {
+        $('login-error').textContent = 'Could not reach the server.';
+      } finally { btn.disabled = false; }
+    };
+
+    $('logout').onclick = async () => {
+      if (dirty && !confirm('You have unsaved changes. Log out anyway?')) return;
+      await fetch('/api/logout', { method: 'POST' }).catch(() => {});
+      dirty = false;
+      location.reload();
+    };
+
+    // Start
+    fetch('/api/session', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(d => (d.loggedIn ? showEditor() : showLogin()))
+      .catch(() => showLogin('The editor only works on the live website.'));
+  </script>
+</body>
+</html>

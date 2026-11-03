@@ -159,48 +159,58 @@
     <div class="footer-bottom">
       <div class="container">
         <p>&copy; <span id="year">2026</span> Tres Dias of St. Louis. All rights reserved.</p>
-        <a href="#top">Back to top ↑</a>
+        <div class="footer-bottom-links">
+          <a href="admin.html">Team Login</a>
+          <a href="#top">Back to top ↑</a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script src="js/secuela.js"></script>
+  <script src="js/content.js"></script>
   <script>
-    // Fill in the Secuela details from js/secuela.js
-    (function () {
-      const S = window.TD_SECUELA;
-      const $ = k => document.querySelector(`[data-s="${k}"]`);
-      const [y, m, d] = S.date.split('-').map(Number);
-      const day = new Date(y, m - 1, d);
-      const dateText = day.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-      const full = `${S.place}, ${S.address}, ${S.city}`;
+    function renderContent() {
+      // Fill in the Secuela details from js/secuela.js
+      (function () {
+        const S = window.TD_SECUELA;
+        const $ = k => document.querySelector(`[data-s="${k}"]`);
+        const [y, m, d] = S.date.split('-').map(Number);
+        const day = new Date(y, m - 1, d);
+        const dateText = day.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+        const full = `${S.place}, ${S.address}, ${S.city}`;
 
-      $('title').textContent = S.title;
-      $('note').textContent = S.note || '';
-      if (!S.note) $('note').style.display = 'none';
-      $('date').textContent = dateText;
-      $('time').textContent = `${S.start} – ${S.end}`;
-      $('place').textContent = S.place;
-      $('address').textContent = S.address;
-      $('city').textContent = S.city;
-      $('directions').href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(full);
-      $('map').src = 'https://www.google.com/maps?q=' + encodeURIComponent(full) + '&z=13&output=embed';
+        $('title').textContent = S.title;
+        $('note').textContent = S.note || '';
+        if (!S.note) $('note').style.display = 'none';
+        $('date').textContent = dateText;
+        $('time').textContent = `${S.start} – ${S.end}`;
+        $('place').textContent = S.place;
+        $('address').textContent = S.address;
+        $('city').textContent = S.city;
+        $('directions').href = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(full);
+        const mapUrl = 'https://www.google.com/maps?q=' + encodeURIComponent(full) + '&z=13&output=embed';
+        if ($('map').getAttribute('src') !== mapUrl) $('map').setAttribute('src', mapUrl);
 
-      // Google Calendar link
-      const to24 = t => { const [, h, mm, ap] = t.match(/(\d+):(\d+)\s*(AM|PM)/i); let H = +h % 12; if (/pm/i.test(ap)) H += 12; return String(H).padStart(2, '0') + mm + '00'; };
-      const ymd = S.date.replace(/-/g, '');
-      $('calendar').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-        + '&text=' + encodeURIComponent('Tres Dias of St. Louis – ' + S.title)
-        + '&dates=' + ymd + 'T' + to24(S.start) + '/' + ymd + 'T' + to24(S.end)
-        + '&ctz=America/Chicago'
-        + '&location=' + encodeURIComponent(full);
+        // Google Calendar link
+        const to24 = t => { const [, h, mm, ap] = t.match(/(\d+):(\d+)\s*(AM|PM)/i); let H = +h % 12; if (/pm/i.test(ap)) H += 12; return String(H).padStart(2, '0') + mm + '00'; };
+        const ymd = S.date.replace(/-/g, '');
+        $('calendar').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+          + '&text=' + encodeURIComponent('Tres Dias of St. Louis – ' + S.title)
+          + '&dates=' + ymd + 'T' + to24(S.start) + '/' + ymd + 'T' + to24(S.end)
+          + '&ctz=America/Chicago'
+          + '&location=' + encodeURIComponent(full);
 
-      $('bring').innerHTML = S.bring.map(b => `
-        <div class="bring-item">
-          <span class="bring-letters">${b.letters}</span>
-          <span class="bring-what">${b.item}</span>
-        </div>`).join('');
-    })();
+        $('bring').innerHTML = S.bring.map(b => `
+          <div class="bring-item">
+            <span class="bring-letters">${TDesc(b.letters)}</span>
+            <span class="bring-what">${TDesc(b.item)}</span>
+          </div>`).join('');
+      })();
+    }
+    renderContent();
+    // Show any newer details saved from the admin page
+    TDContent.ready.then(d => { if (d) renderContent(); });
   </script>
   <script>
     // Mobile menu open/close
