@@ -1206,7 +1206,14 @@ a { color: var(--green-dark); }
   transition: transform .2s, box-shadow .2s, border-color .2s;
 }
 .quick:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.07); border-color: rgba(35,177,73,0.35); }
-.quick svg { flex: 0 0 24px; width: 24px; height: 24px; fill: none; stroke: var(--green-dark); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.quick svg {
+  flex: 0 0 34px; width: 34px; height: 34px;
+  fill: none; stroke: #3d413f; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round;
+  overflow: visible;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.12)) drop-shadow(0 4px 8px rgba(26,143,58,0.12));
+}
+.quick svg .tone { stroke: url(#td-stroke); stroke-width: 1.35; }
+.quick svg .fill { fill: url(#td-fill); }
 .quick > span:not(.arrow) { flex: 1; display: flex; flex-direction: column; font-size: 15px; color: var(--muted); }
 .quick strong { font-size: 17px; color: var(--ink); font-weight: 600; }
 .quick .arrow { color: var(--green-dark); flex: 0 0 18px; }
