@@ -51,4 +51,4 @@ Everyone is logged out when the password changes. Logins last 8 hours.
   Facebook, in texts, etc. Icons: `favicon.ico` and `images/`.
 - `sitemap.xml` and `robots.txt` help Google; the admin page is kept out.
 - `vercel.json` also redirects old Wix addresses (like /about) to the new pages.
-- Main address used in these files: https://tresdiasstl.org
+- Main address used in these files: https://www.tresdiasstl.org
