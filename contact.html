@@ -121,7 +121,7 @@
             </div>
             <div>
               <label for="c-phone">Phone <span class="opt">(optional)</span></label>
-              <input type="tel" id="c-phone" name="phone" autocomplete="tel">
+              <input type="tel" id="c-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="(314) 555-1234" maxlength="14">
             </div>
           </div>
 
@@ -267,6 +267,30 @@
     });
   </script>
   <script>
+    // Format the phone number as (314) 555-1234 while typing
+    (function () {
+      const el = document.getElementById('c-phone');
+      const fmt = v => {
+        let d = v.replace(/\D/g, '');
+        d = d.replace(/^1/, '');   // US area codes never start with 1, so drop a leading 1
+        d = d.slice(0, 10);
+        if (d.length < 4) return d.length ? '(' + d : '';
+        if (d.length < 7) return `(${d.slice(0, 3)}) ${d.slice(3)}`;
+        return `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`;
+      };
+      el.addEventListener('input', e => {
+        // Let people delete through the punctuation without it snapping back
+        if (e.inputType && e.inputType.startsWith('delete')) {
+          const digits = el.value.replace(/\D/g, '');
+          if (digits.length <= 3) { el.value = digits; return; }
+        }
+        el.value = fmt(el.value);
+      });
+      el.addEventListener('paste', () => setTimeout(() => { el.value = fmt(el.value); }, 0));
+      el.addEventListener('blur', () => { el.value = fmt(el.value); });
+    })();
+  </script>
+  <script>
     // Send the contact form through Web3Forms (emails chairman@tresdiasstl.org)
     (function () {
       const form = document.getElementById('contact-form');
@@ -279,6 +303,12 @@
         e.preventDefault();
         const f = form.elements;
         const name = f.namedItem('name').value.trim(), email = f.namedItem('email').value.trim(), msg = f.namedItem('message').value.trim();
+        const phone = f.namedItem('phone').value.replace(/\D/g, '');
+        if (phone && phone.length !== 10) {
+          show('Please enter a full 10-digit phone number, or leave it blank.', true);
+          f.namedItem('phone').focus();
+          return;
+        }
         // Spam bots tick the hidden box; quietly "succeed" without sending
         if (f.namedItem('botcheck').checked) { form.hidden = true; thanks.hidden = false; return; }
         if (!name || !msg || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
