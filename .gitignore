@@ -1,3 +1,12 @@
 node_modules/
 .vercel/
 .env*
+
+# Original photos and old files kept on this computer only (not part of the website).
+# The site uses the copies in the images/ and files/ folders.
+/*.jpeg
+/*.jpg
+/*.webp
+/*.png
+/*.zip
+/files/tres-dias-stl-brochure1.pdf
